@@ -1,0 +1,31 @@
+{
+  "name": "lzc",
+  "version": "1.0.0",
+  "description": "Amazing Discord bot for LZC Community...",
+  "main": "index.js",
+  "scripts": {
+    "bot": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arhcoder/LZC-Discord-Bot.git"
+  },
+  "keywords": [
+    "LZC",
+    "Discord",
+    "Bot",
+    "Community",
+    "Multitask"
+  ],
+  "author": "Alejandro Ramos @arhcoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arhcoder/LZC-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/arhcoder/LZC-Discord-Bot#readme",
+  "dependencies": {
+    "discord.js": "^13.7.0",
+    "dotenv": "^16.0.1",
+    "npm": "^8.10.0"
+  }
+}
