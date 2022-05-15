@@ -31,7 +31,7 @@ module.exports.run = (client, message, args) =>
         {
             name: ":clipboard:  lzc eventos",
             value: constants.separator+"  Escribe este comando e inserta una imagen con el calendario de eventos de la semana, para actualizarlo. "+
-            "Colocar la imagen y el comando en el mismo mensaje;\n\u200B",
+            "Coloca la imagen y el comando en el mismo mensaje;\n\u200B",
             inline: false
         },
     )

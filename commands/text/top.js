@@ -77,7 +77,7 @@ module.exports.run = (client, message, args) =>
     
             // Create the embeds based on the board...
             const topEmbed01 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -86,11 +86,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[2].name, value: board[2].value, inline: false},
                 {name: board[3].name, value: board[3].value, inline: false},
                 {name: board[4].name, value: board[4].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 1 de 10"});
     
             const topEmbed02 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -99,11 +99,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[7].name, value: board[7].value, inline: false},
                 {name: board[8].name, value: board[8].value, inline: false},
                 {name: board[9].name, value: board[9].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 2 de 10"});
     
             const topEmbed03 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -112,11 +112,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[12].name, value: board[12].value, inline: false},
                 {name: board[13].name, value: board[13].value, inline: false},
                 {name: board[14].name, value: board[14].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 3 de 10"});
     
             const topEmbed04 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -125,11 +125,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[17].name, value: board[17].value, inline: false},
                 {name: board[18].name, value: board[18].value, inline: false},
                 {name: board[19].name, value: board[19].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 4 de 10"});
     
             const topEmbed05 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -138,11 +138,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[22].name, value: board[22].value, inline: false},
                 {name: board[23].name, value: board[23].value, inline: false},
                 {name: board[24].name, value: board[24].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 5 de 10"});
     
             const topEmbed06 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -151,11 +151,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[27].name, value: board[27].value, inline: false},
                 {name: board[28].name, value: board[28].value, inline: false},
                 {name: board[29].name, value: board[29].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 6 de 10"});
     
             const topEmbed07 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -164,11 +164,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[32].name, value: board[32].value, inline: false},
                 {name: board[33].name, value: board[33].value, inline: false},
                 {name: board[34].name, value: board[34].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 7 de 10"});
     
             const topEmbed08 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -177,11 +177,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[37].name, value: board[37].value, inline: false},
                 {name: board[38].name, value: board[38].value, inline: false},
                 {name: board[39].name, value: board[39].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 8 de 10"});
     
             const topEmbed09 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -190,11 +190,11 @@ module.exports.run = (client, message, args) =>
                 {name: board[42].name, value: board[42].value, inline: false},
                 {name: board[43].name, value: board[43].value, inline: false},
                 {name: board[44].name, value: board[44].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 9 de 10"});
     
             const topEmbed10 = new MessageEmbed()
-            .setTitle("**TOP MIEMBROS LZC**")
+            .setTitle("**:crown:   TOP MIEMBROS LZC**")
             .setDescription("\n\u200B")
             .setColor(constants.lzcolor)
             .addFields(
@@ -203,13 +203,12 @@ module.exports.run = (client, message, args) =>
                 {name: board[47].name, value: board[47].value, inline: false},
                 {name: board[48].name, value: board[48].value, inline: false},
                 {name: board[49].name, value: board[49].value, inline: false},
-            )
+            );
             // .setFooter({text: "Página 10 de 10"});
     
             // Do the pagination with the embeds...
             var embeds = [topEmbed01, topEmbed02, topEmbed03, topEmbed04, topEmbed05,
             topEmbed06, topEmbed07, topEmbed08, topEmbed09, topEmbed10];
-
             try
             {
                 await pagination(
@@ -217,6 +216,29 @@ module.exports.run = (client, message, args) =>
                     author: message.author,
                     channel: message.channel,
                     embeds: embeds,
+                    button:
+                    [
+                        {
+                            name: "first",
+                            style: "PRIMARY",
+                            emoji: constants.first
+                        },
+                        {
+                            name: "previous",
+                            style: "PRIMARY",
+                            emoji: constants.previous
+                        },
+                        {
+                            name: "next",
+                            style: "PRIMARY",
+                            emoji: constants.next
+                        },
+                        {
+                            name: "last",
+                            style: "PRIMARY",
+                            emoji: constants.last
+                        }
+                    ],
                     fastSkip: true,
                     time: 40000
                 });

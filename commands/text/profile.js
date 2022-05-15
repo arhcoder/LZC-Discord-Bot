@@ -69,7 +69,8 @@ module.exports.run = (client, message, args) =>
                     value: constants.separator+"  #\`"+user.messageCount+"\`;\n\u200B",
                     inline: false
                 }
-            );
+            )
+            .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"});
 
             const serverStatsEmbed = new MessageEmbed()
             .setAuthor({name: "Estadísticas de " +user.username, iconURL: member.displayAvatarURL()})
@@ -97,7 +98,8 @@ module.exports.run = (client, message, args) =>
                     value: constants.separator+"  #\`"+stats[0][0].commands+"\`;\n\u200B",
                     inline: false
                 }
-            );
+            )
+            .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"});
 
             const eventsStatsEmbed = new MessageEmbed()
             .setAuthor({name: "Estadísticas de " +user.username, iconURL: member.displayAvatarURL()})
@@ -125,7 +127,8 @@ module.exports.run = (client, message, args) =>
                     value: constants.separator+"  #\`"+stats[0][0].colors+"\`;\n\u200B",
                     inline: false
                 }
-            );
+            )
+            .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"});
 
             const VSStatsEmbed = new MessageEmbed()
             .setAuthor({name: "Estadísticas de " +user.username, iconURL: member.displayAvatarURL()})
@@ -134,7 +137,7 @@ module.exports.run = (client, message, args) =>
             .setColor(constants.lzcolor)
             .addFields(
                 {
-                    name: ":punch::skin-tone-1:  V.S participados",
+                    name: ":punch:  V.S participados",
                     value: constants.separator+"  #\`"+stats[0][0].vsparticipations+"\`;\n\u200B",
                     inline: false
                 },
@@ -153,7 +156,8 @@ module.exports.run = (client, message, args) =>
                     value: constants.separator+"  #\`"+stats[0][0].vswins+"\`;\n\u200B",
                     inline: false
                 }
-            );
+            )
+            .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"});
 
             // Do the pagination with the embeds...
             var embeds = [mee6StatsEmbed, serverStatsEmbed, eventsStatsEmbed, VSStatsEmbed];

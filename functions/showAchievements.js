@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
+const { MessageEmbed } = require("discord.js");
 const { pagination } = require("reconlx");
 const constants = require("../config/constants");
-const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (message, memberID, args) =>
 {
@@ -39,8 +39,8 @@ module.exports.run = async (message, memberID, args) =>
                 // Build the embed field with the won achievement data...
                 var achievementField =
                 {
-                    name: "**:gem: " + achievement.name+"**",
-                    value: constants.separator+"  *"+achievement.description+" •*\n\u200B"
+                    name: "**<:"+achievement.id+":"+achievement.icon+">  "+achievement.name+"**",
+                    value: constants.separator+"  ***"+achievement.description+"***\n\u200B"
                 };
             }
             else
@@ -49,15 +49,17 @@ module.exports.run = async (message, memberID, args) =>
                 var achievementField =
                 {
                     name: "**"+constants.lock+"**\u200B",
-                    value: constants.separator+"  *"+achievement.description+" •*\n\u200B"
+                    value: constants.separator+"  *"+achievement.description+"* •\n\u200B"
                 };
             }
             achievements.push(achievementField);
         }
 
+        
         // Builds the Embeds...
         const embed01 = new MessageEmbed()
-        .setTitle("**Logros de " +member.user.username+"**")
+        // .setTitle("**Logros de " +member.user.username+"**")
+        .setAuthor({iconURL: member.displayAvatarURL(), name: "Logros de "+member.user.username})
         .setDescription("En eventos...\n\u200B")
         .setColor(constants.lzcolor)
         .addFields(
@@ -67,11 +69,12 @@ module.exports.run = async (message, memberID, args) =>
             {name: achievements[3].name, value: achievements[3].value, inline: false},
             {name: achievements[4].name, value: achievements[4].value, inline: false},
             {name: achievements[5].name, value: achievements[5].value, inline: false}
-        )
+        );
         // .setFooter({text: "Página 1 de 4"});*/
         
         const embed02 = new MessageEmbed()
-        .setTitle("**Logros de " +member.user.username+"**")
+        // .setTitle("**Logros de " +member.user.username+"**")
+        .setAuthor({iconURL: member.displayAvatarURL(), name: "Logros de "+member.user.username})
         .setDescription("En niveles...\n\u200B")
         .setColor(constants.lzcolor)
         .addFields(
@@ -81,11 +84,12 @@ module.exports.run = async (message, memberID, args) =>
             {name: achievements[9].name, value: achievements[9].value, inline: false},
             {name: achievements[10].name, value: achievements[10].value, inline: false},
             {name: achievements[11].name, value: achievements[11].value, inline: false}
-        )
+        );
         // .setFooter({text: "Página 2 de 4"});*/
         
         const embed03 = new MessageEmbed()
-        .setTitle("**Logros de " +member.user.username+"**")
+        // .setTitle("**Logros de " +member.user.username+"**")
+        .setAuthor({iconURL: member.displayAvatarURL(), name: "Logros de "+member.user.username})
         .setDescription("En mensajes...\n\u200B")
         .setColor(constants.lzcolor)
         .addFields(
@@ -97,11 +101,12 @@ module.exports.run = async (message, memberID, args) =>
             {name: achievements[17].name, value: achievements[17].value, inline: false},
             // {name: achievements[18].name, value: achievements[18].value, inline: false},
             // {name: achievements[19].name, value: achievements[19].value, inline: false}
-        )
+        );
         // .setFooter({text: "Página 3 de 4"});*/
         
         const embed04 = new MessageEmbed()
-        .setTitle("**Logros de " +member.user.username+"**")
+        // .setTitle("**Logros de " +member.user.username+"**")
+        .setAuthor({iconURL: member.displayAvatarURL(), name: "Logros de "+member.user.username})
         .setDescription("En V.S...\n\u200B")
         .setColor(constants.lzcolor)
         .addFields(
@@ -111,7 +116,7 @@ module.exports.run = async (message, memberID, args) =>
             {name: achievements[23].name, value: achievements[23].value, inline: false},
             {name: achievements[24].name, value: achievements[24].value, inline: false},
             {name: achievements[25].name, value: achievements[25].value, inline: false}
-        )
+        );
         // .setFooter({text: "Página 4 de 4"});*/
 
         // Do the pagination with the embeds...
@@ -123,6 +128,29 @@ module.exports.run = async (message, memberID, args) =>
                 author: message.author,
                 channel: message.channel,
                 embeds: embeds,
+                button:
+                [
+                    /*{
+                        name: "first",
+                        style: "PRIMARY",
+                        emoji: constants.first
+                    },*/
+                    {
+                        name: "previous",
+                        style: "PRIMARY",
+                        emoji: constants.previous
+                    },
+                    {
+                        name: "next",
+                        style: "PRIMARY",
+                        emoji: constants.next
+                    }
+                    /*{
+                        name: "last",
+                        style: "PRIMARY",
+                        emoji: constants.last
+                    },*/
+                ],
                 fastSkip: false,
                 time: 40000
             });

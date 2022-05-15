@@ -37,7 +37,7 @@ module.exports.run = (client, message, args) =>
             .setRank(user.rank, "TOP #", true)
             .setRankColor(constants.lzcmaincolor)
             
-            .setLevel(user.level, "NIVEL # ", true)
+            .setLevel(user.level, "LVL #", true)
             .setLevelColor(constants.lzcmaincolor)
     
             .setBackground("IMAGE", constants.rankCardBackgroundPattern)

@@ -8,6 +8,7 @@ const variables = require("./config/variables");
 const newMember = require("./functions/newMember");
 const countMessage = require("./functions/countMessage");
 const countCommand = require("./functions/countCommand");
+const checkAchievements = require("./functions/checkAchievements");
 
 
 
@@ -76,27 +77,46 @@ client.on("messageCreate", message =>
 {
     // If the message is from a bot...
     if (message.author.bot)
+    {
+        // Checks if in the rank channel notifications someone gets a new achievement...
+        // It is because the MEE6 bot update the levels and notifies on this channel...
+        if (message.channel.id === variables.ranksChannelID)
+        {
+            // If is there a mentionated user
+            if (message.mentions.members.size)
+            {
+                checkAchievements.run(client, message,
+                message.mentions.members.first().user.id,
+                message.mentions.members.first().user.id,
+                false);
+            }
+        }
         return;
-
+    }
+    
+    // console.log(message.mentions.members.user);
+    
     // If the message is not a command...
     var messageContent = message.content.toLowerCase();
-    if (!messageContent.startsWith(prefix + " "))
+    if (!messageContent.startsWith(prefix + " ") &&
+    messageContent !== "<@"+variables.botID+">" &&
+    messageContent !== "<@&"+variables.botRoleID+">")
     {
         countMessage.run(message);
         return;
     }
 
     // Only if the message call a command, it searchs the command...
-    if (messageContent.startsWith(prefix + " ") || message.content === "<@"+variables.botID+">" || message.content === "<@&"+variables.botRoleID+">")
+    if (messageContent.startsWith(prefix + " ") || messageContent === "<@"+variables.botID+">" || messageContent === "<@&"+variables.botRoleID+">")
     {
         // Gets the command info to execute functions...
-        const args = message.content.slice(prefix.length + 1).split(/ +/);
+        const args = messageContent.slice(prefix.length + 1).split(/ +/);
         var cmd = args.shift().toLowerCase();
 
         // For the command "comandos" or "ayuda" or "help" or "commands"...
         if(cmd === "comandos" || cmd === "ayuda" || cmd === "commands" || cmd === "comands" || cmd === "help" ||
-        cmd === "<@"+variables.botID+">" || message.content === "<@"+variables.botID+">"
-        || cmd === "<@&"+variables.botRoleID+">" || message.content === "<@&"+variables.botRoleID+">")
+        cmd === "<@"+variables.botID+">" || messageContent === "<@"+variables.botID+">"
+        || cmd === "<@&"+variables.botRoleID+">" || messageContent === "<@&"+variables.botRoleID+">")
             cmd = "commands";
 
         // For the command "perfil" or "profile" or "stats" or "yo"...

@@ -29,7 +29,7 @@ module.exports.run = async (client, userID, achievementID) =>
         const achievementEmbed = new MessageEmbed()
         .setTitle("**"+achievement[0].name+"**")
         .setDescription("\u200B\n*"+achievement[0].description+"*;\n\u200B")
-        .setThumbnail("attachment://lzc.png")
+        .setThumbnail("attachment://"+achievementID+".png")
         .setColor(constants.lzcolor)
         .setTimestamp(new Date())
         .setFooter({text: "🏆"});
@@ -40,8 +40,8 @@ module.exports.run = async (client, userID, achievementID) =>
                 embeds: [achievementEmbed],
                 files:
                 [{
-                    attachment: "./images/lzc.png",
-                    name: "lzc.png"
+                    attachment: "./icons/"+achievementID+".png",
+                    name: achievementID+".png"
                 }]
             }
         );

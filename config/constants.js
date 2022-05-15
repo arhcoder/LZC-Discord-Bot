@@ -10,4 +10,9 @@ module.exports =
 
     separator: "<:separator:975651401789218838>",
     lock: "<:lock:977039530639130635>",
+
+    first: "<:first:978123217380204634>",
+    previous: "<:previous:978123217698975774>",
+    next: "<:next:978123217690587157>",
+    last: "<:last:978123217388589086>",
 }

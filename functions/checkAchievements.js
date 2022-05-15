@@ -4,7 +4,7 @@ const constants = require("../config/constants");
 const newAchievement = require("../functions/newAchievement");
 const showAchievements = require("../functions/showAchievements");
 
-module.exports.run = async (client, message, userID, args) =>
+module.exports.run = async (client, message, userID, args, shows = true) =>
 {
     // Gets the MEE6 level of the user...
     Mee6LevelsApi.getUserXp(constants.lzcGuildID, userID).then(async user =>
@@ -59,7 +59,6 @@ module.exports.run = async (client, message, userID, args) =>
         if (memberMessages.anime >= 200 && !memberAchievements.includes("C03"))
             await newAchievement.run(client, userID, "C03");
         
-        
         // "C04": Emojis messages >= 500...
         if (memberMessages.emojis >= 500 && !memberAchievements.includes("C04"))
             await newAchievement.run(client, userID, "C04");
@@ -72,6 +71,10 @@ module.exports.run = async (client, message, userID, args) =>
         if (memberMessages.antivoz >= 2000 && !memberAchievements.includes("C06"))
             await newAchievement.run(client, userID, "C06");
         
-        await showAchievements.run(message, userID, args);
+        // If it has to show the achievement...
+        if (shows)
+        {
+            await showAchievements.run(message, userID, args);
+        }
     });
 };

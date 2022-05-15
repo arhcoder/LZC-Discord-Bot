@@ -6,6 +6,8 @@ module.exports =
     botAdminRoleID: "975149569467908146",
     
     achievementsChannelID: "975148520073998346",
+    ranksChannelID: "975755652452454442",
+
     cartoonChannelID: "977617325173907456",
     animeChannelID: "977617352353001552",
     memesChannelID: "977617372510834699",

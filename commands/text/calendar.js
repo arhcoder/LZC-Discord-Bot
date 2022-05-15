@@ -25,8 +25,7 @@ module.exports.run = (client, message, arg) =>
         .setTitle("**Calendario de la semana**")
         .setColor(constants.lzcolor)
         .setImage(calendar)
-        .addFields(
-        )
+        // .addFields()
         .setTimestamp(new Date())
         .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"});
         message.channel.send({embeds: [calendarEmbed]});
