@@ -51,6 +51,6 @@ module.exports.run = async (client, message, args) =>
         }*/
     )
     // .setTimestamp(new Date())
-    .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"})
+    .setFooter({iconURL: client.user.displayAvatarURL(), text: "LZC Discord Bot"});
     message.channel.send({embeds: [commandsEmbed]});
 };
