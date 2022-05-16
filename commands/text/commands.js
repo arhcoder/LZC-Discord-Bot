@@ -15,8 +15,8 @@ module.exports.run = async (client, message, args) =>
             inline: true
         },
         {
-            name: ":medal:  lzc insignias",
-            value: constants.separator+"  Muestra tu lista de medallas;\n\u200B",
+            name: ":medal:  lzc medallas",
+            value: constants.separator+"  Muestra tu lista de insignias;\n\u200B",
             inline: true
         },
         {

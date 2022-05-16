@@ -64,7 +64,7 @@ client.on("messageCreate", message =>
         var cmd = args.shift().toLowerCase();
 
         // For the command "comandos" or "ayuda" or "help" or "commands"...
-        if(cmd === "comandos" || cmd === "ayuda" || cmd === "commands" || cmd === "help" ||
+        if(cmd === "comandos" || cmd === "ayuda" || cmd === "commands" || cmd === "comands" || cmd === "help" ||
         cmd === "<@"+variables.botID+">" || message.content === "<@"+variables.botID+">"
         || cmd === "<@&"+variables.botRoleID+">" || message.content === "<@&"+variables.botRoleID+">")
             cmd = "commands";
@@ -77,8 +77,8 @@ client.on("messageCreate", message =>
         else if(cmd === "logros" || cmd === "achievements" || cmd === "trofeos")
             cmd = "achievements";
 
-        // For the command "insignias" or "roles" or "badges"...
-        else if(cmd === "insignias" || cmd === "roles" || cmd === "medallas" || cmd === "badges")
+        // For the command "medallas" or "insignias" or "roles" or "badges"...
+        else if(cmd === "medallas" || cmd === "insignias" || cmd === "roles" || cmd === "badges")
             cmd = "badges";
 
         // For the command "top" or "ranking"...
