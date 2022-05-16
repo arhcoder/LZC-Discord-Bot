@@ -32,7 +32,7 @@ client.once("ready", () =>
 });
 
 // Running app backend...
-backend.run();
+// backend.run();
 
 
 
@@ -74,11 +74,11 @@ client.on("messageCreate", message =>
             cmd = "profile";
 
         // For the command "logros" or "achievements"...
-        else if(cmd === "logros" || cmd === "achievements")
+        else if(cmd === "logros" || cmd === "achievements" || cmd === "trofeos")
             cmd = "achievements";
 
         // For the command "insignias" or "roles" or "badges"...
-        else if(cmd === "insignias" || cmd === "roles" || cmd === "badges")
+        else if(cmd === "insignias" || cmd === "roles" || cmd === "medallas" || cmd === "badges")
             cmd = "badges";
 
         // For the command "top" or "ranking"...
