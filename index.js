@@ -1,9 +1,10 @@
 // Importations...
 "use strict";
 require("dotenv").config();
-const Discord = require("discord.js");
 const fs = require("fs");
-const variables = require("./variables");
+const Discord = require("discord.js");
+const backend = require("./api/backend");
+const variables = require("./config/variables");
 
 
 
@@ -30,6 +31,9 @@ client.once("ready", () =>
 	client.user.setActivity("LZC 😎");
 });
 
+// Running app backend...
+backend.run();
+
 
 
 
@@ -38,11 +42,11 @@ const prefix = "lzc";
 
 // Gets the commands collection to do a handler...
 client.commands = new Discord.Collection();
-const commands = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
+const commands = fs.readdirSync("./commands/text/").filter(file => file.endsWith(".js"));
 for(let file of commands)
 {
     const commandName = file.split(".")[0];
-    const commandReference = require(`./commands/${commandName}`);
+    const commandReference = require("./commands/text/"+commandName);
     client.commands.set(commandName, commandReference);
 }
 
@@ -53,7 +57,7 @@ for(let file of commands)
 client.on("messageCreate", message =>
 {
     // Only if the message call a command, it searchs the command...
-    if (message.content.startsWith(prefix) || message.content === `<@${variables.botID}>` || message.content === `<@&${variables.botRoleID}>` || message.author.bot)
+    if (message.content.startsWith(prefix) || message.content === "<@"+variables.botID+">" || message.content === "<@&"+variables.botRoleID+">" || message.author.bot)
     {
         // Gets the command info to execute functions...
         const args = message.content.slice(prefix.length + 1).split(/ +/);
@@ -61,8 +65,8 @@ client.on("messageCreate", message =>
 
         // For the command "comandos" or "ayuda" or "help" or "commands"...
         if(cmd === "comandos" || cmd === "ayuda" || cmd === "commands" || cmd === "help" ||
-        cmd === `<@${variables.botID}>` || message.content === `<@${variables.botID}>`
-        || cmd === `<@&${variables.botRoleID}>` || message.content === `<@&${variables.botRoleID}>`)
+        cmd === "<@"+variables.botID+">" || message.content === "<@"+variables.botID+">"
+        || cmd === "<@&"+variables.botRoleID+">" || message.content === "<@&"+variables.botRoleID+">")
             cmd = "commands";
 
         // For the command "perfil" or "profile" or "stats" or "yo"...
@@ -98,5 +102,5 @@ client.on("messageCreate", message =>
 
 
 
-// Login to Discord with your clien's token...
+// Login to Discord with his client's token...
 client.login(TOKEN);
