@@ -93,6 +93,14 @@ client.on("messageCreate", message =>
         else if(cmd === "calendario" || cmd === "calendar")
             cmd = "calendar";
 
+        // For the command "admin"...
+        else if(cmd === "admin")
+            cmd = "admin";
+
+        // For the command "eventos" or "events" or "semana" or "week"...
+        else if(cmd === "eventos" || cmd === "events" || cmd === "semana" || cmd === "week")
+            cmd = "events";
+
         // Executes the command if it exists...
         const command = client.commands.get(cmd);
         if(command) command.run(client, message, args);
