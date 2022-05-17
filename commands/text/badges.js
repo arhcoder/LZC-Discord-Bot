@@ -29,7 +29,7 @@ module.exports.run = (client, message, args) =>
         // .setThumbnail(member.displayAvatarURL())
         .setColor(constants.lzcolor)
         .setTimestamp(new Date())
-        .setFooter({text: "🥇"});
+        .setFooter({text: "🏅"});
         message.channel.send({embeds: [badgesEmbed]});
     }
     catch
