@@ -19,4 +19,14 @@ module.exports.run = (client, message, args) =>
 
     // Else, it continues and obay his author...
     // message.reply("Diga usted, mi amo :pray:");
+
+    // Gets the first attachment if it exist...
+    if (message.attachments.size > 0)
+    {
+        const calendar = message.attachments.first().url;
+        // console.log(calendar);
+
+        // Saves the image into the database...
+    }
+    else return message.reply("No olvides insertar la imagen del calendario junto al comando :sweat_smile:");
 };
