@@ -1,3 +1,4 @@
+const db = require("quick.db");
 const variables = require("../../config/variables");
 
 module.exports.run = (client, message, args) =>
@@ -26,7 +27,15 @@ module.exports.run = (client, message, args) =>
         const calendar = message.attachments.first().url;
         // console.log(calendar);
 
-        // Saves the image into the database...
+        // Saves the image into the quick database...
+        try
+        {
+            db.set("calendar", {url: calendar});
+        }
+        catch
+        {
+            return message.reply("Ocurrió un error, prueba de nuevo :pensive:");
+        }
     }
     else return message.reply("No olvides insertar la imagen del calendario junto al comando :sweat_smile:");
 };
