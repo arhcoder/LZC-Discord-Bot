@@ -24,7 +24,7 @@ module.exports.run = async () =>
         // port: 3000,
         user: "root",
         database: "lzc",
-        password: "¡La Zona Cero!",
+        password: "",
         multipleStatements: true
     });
     connection.connect((error) =>
@@ -51,19 +51,23 @@ module.exports.run = async () =>
         // response.setHeader("Access-Control-Allow-Origin", "*");
         // response.setHeader("Access-Control-Allow-Credentials", true);
 
-        connection.query("SELECT achievements FROM members WHERE id = ?", [request.params.userID], (error, rows, fields) =>
+        connection.query("SELECT achievements FROM members WHERE id = ?", [request.params.userID], (error, data, fields) =>
         {
-            if (!error) response.send(rows);
+            if (!error) response.send(data);
             else response.send(error);
         });
     });
 
-    // SELECT CALENDAR //
-    app.get("/calendar", (request, response) =>
+    
+    // SELECT USER POINTS //
+    app.get("/points/:userID", (request, response) =>
     {
-        connection.query("SELECT url FROM calendar", (error, rows, fields) =>
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("SELECT lzcpoints FROM members WHERE id = ?", [request.params.userID], (error, data, fields) =>
         {
-            if (!error) response.send(rows);
+            if (!error) response.send(data);
             else response.send(error);
         });
     });
