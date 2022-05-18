@@ -21,8 +21,8 @@ module.exports.run = (client, message, args) =>
                 let level = leaderboard[i]["level"];
                 let xp = leaderboard[i]["xp"]["totalXp"];
                 let lzc = 882;
-                if (parseInt(xp) >= 1000) xp = "" + parseInt(parseInt(xp) / 1000) + "k";
-                else if (parseInt(xp) >= 1000000) xp = "" + parseInt(xp) / 1000000 + "M";
+                if (parseInt(xp) >= 1000000) xp = "" + (parseInt(xp) / 1000000).toFixed(2) + "M";
+                else if (parseInt(xp) >= 1000) xp = "" + parseInt(parseInt(xp) / 1000) + "k";
     
                 // Sets the emojis of the embed field title...
                 if (i+1 === 1)
