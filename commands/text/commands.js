@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) =>
     .setTitle("**Comandos LZC**")
     .setColor(constants.lzcolor)
     .setThumbnail(constants.lzclogo)
-    .setDescription("Escribe un comando usando el prefijo **lzc**:\n\nCon \`logros\`, \`insignias\`, \`rank\` y \`perfil\` puedes agregar un \`@usuario\`;\n\u200B")
+    .setDescription("Escribe un comando usando el prefijo **lzc**:\n\nCon \`logros\`, \`medallas\`, \`rank\` y \`perfil\` puedes agregar un \`@usuario\`;\n\u200B")
     .addFields(
         {
             name: ":trophy:  lzc logros",
