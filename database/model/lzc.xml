@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.2.0
+- https://www.phpmyadmin.net
+-
+- Servidor: 127.0.0.1
+- Tiempo de generación: 19-05-2022 a las 05:00:34
+- Versión del servidor: 10.4.24-MariaDB
+- Versión de PHP: 8.1.6
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="lzc" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="achievements">
+                CREATE TABLE `achievements` (
+                  `id` varchar(4) NOT NULL,
+                  `name` varchar(100) NOT NULL,
+                  `description` varchar(200) NOT NULL,
+                  `icon` varchar(20) NOT NULL,
+                  `value` int(8) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="members">
+                CREATE TABLE `members` (
+                  `id` varchar(20) NOT NULL,
+                  `achievements` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT &#039;[]&#039; CHECK (json_valid(`achievements`)),
+                  `lzcpoints` int(8) NOT NULL DEFAULT 0,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="messages">
+                CREATE TABLE `messages` (
+                  `memberID` varchar(20) NOT NULL,
+                  `cartoon` int(8) NOT NULL DEFAULT 0,
+                  `anime` int(8) NOT NULL DEFAULT 0,
+                  `memes` int(8) NOT NULL DEFAULT 0,
+                  `emojis` int(8) NOT NULL DEFAULT 0,
+                  `pop` int(8) NOT NULL DEFAULT 0,
+                  `lzgeneral` int(8) NOT NULL DEFAULT 0,
+                  `antivoz` int(8) NOT NULL DEFAULT 0,
+                  PRIMARY KEY (`memberID`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="stats">
+                CREATE TABLE `stats` (
+                  `memberID` varchar(20) NOT NULL,
+                  `vsparticipations` int(4) NOT NULL DEFAULT 0,
+                  `vsfinalist` int(4) NOT NULL DEFAULT 0,
+                  `vsallstars` int(4) NOT NULL DEFAULT 0,
+                  `vswins` int(4) NOT NULL DEFAULT 0,
+                  `colors` int(4) NOT NULL DEFAULT 0,
+                  `requests` int(4) NOT NULL DEFAULT 0,
+                  `sleepovers` int(4) NOT NULL DEFAULT 0,
+                  `movies` int(4) NOT NULL DEFAULT 0,
+                  `commands` int(4) NOT NULL DEFAULT 0,
+                  PRIMARY KEY (`memberID`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Base de datos: 'lzc'
+    -->
+    <database name="lzc">
+        <!-- Tabla achievements -->
+        <table name="achievements">
+            <column name="id">A01</column>
+            <column name="name">¡Dibuja lo que te digo!</column>
+            <column name="description">Te aceptaron una propuesta en viernes de request</column>
+            <column name="icon"></column>
+            <column name="value">444</column>
+        </table>
+        <table name="achievements">
+            <column name="id">A02</column>
+            <column name="name">No necesito dormir</column>
+            <column name="description">Participaste en una pijamada</column>
+            <column name="icon"></column>
+            <column name="value">466</column>
+        </table>
+        <table name="achievements">
+            <column name="id">A03</column>
+            <column name="name">Cinéfilo de corazón</column>
+            <column name="description">Viste cinco películas en el cine de Primera Estación</column>
+            <column name="icon"></column>
+            <column name="value">688</column>
+        </table>
+        <table name="achievements">
+            <column name="id">A04</column>
+            <column name="name">Miembro LZC</column>
+            <column name="description">Participaste en alguna dinámica</column>
+            <column name="icon"></column>
+            <column name="value">222</column>
+        </table>
+        <table name="achievements">
+            <column name="id">A05</column>
+            <column name="name">Artista colorido</column>
+            <column name="description">Hiciste un dibujo para LZColors</column>
+            <column name="icon"></column>
+            <column name="value">556</column>
+        </table>
+        <table name="achievements">
+            <column name="id">A06</column>
+            <column name="name">Artista MUY colorido</column>
+            <column name="description">Participaste por lo menos con cinco dibujos en LZColors</column>
+            <column name="icon"></column>
+            <column name="value">888</column>
+        </table>
+        <table name="achievements">
+            <column name="id">B01</column>
+            <column name="name">Miembro clase D</column>
+            <column name="description">Llegaste a nivel #10</column>
+            <column name="icon"></column>
+            <column name="value">100</column>
+        </table>
+        <table name="achievements">
+            <column name="id">B02</column>
+            <column name="name">Miembro clase C</column>
+            <column name="description">Llegaste a nivel #20</column>
+            <column name="icon"></column>
+            <column name="value">200</column>
+        </table>
+        <table name="achievements">
+            <column name="id">B03</column>
+            <column name="name">Miembro clase B</column>
+            <column name="description">Llegaste a nivel #40</column>
+            <column name="icon"></column>
+            <column name="value">400</column>
+        </table>
+        <table name="achievements">
+            <column name="id">B04</column>
+            <column name="name">Miembro clase A</column>
+            <column name="description">Llegaste a nivel #60</column>
+            <column name="icon"></column>
+            <column name="value">600</column>
+        </table>
+        <table name="achievements">
+            <column name="id">B05</column>
+            <column name="name">Miembro del CONSEJO 05</column>
+            <column name="description">Llegaste a nivel #80</column>
+            <column name="icon"></column>
+            <column name="value">800</column>
+        </table>
+        <table name="achievements">
+            <column name="id">B06</column>
+            <column name="name">SOBERANO PRESIDENTE</column>
+            <column name="description">Llegaste a nivel #100</column>
+            <column name="icon"></column>
+            <column name="value">1000</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C01</column>
+            <column name="name">Cartoonero</column>
+            <column name="description">Mandaste 50 mensajes en #Cartoons</column>
+            <column name="icon"></column>
+            <column name="value">144</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C02</column>
+            <column name="name">Otaku</column>
+            <column name="description">Mandaste 200 mensajes en #Anime</column>
+            <column name="icon"></column>
+            <column name="value">244</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C03</column>
+            <column name="name">Memero</column>
+            <column name="description">Mandaste 100 mensajes en #Memes y #Shitposting</column>
+            <column name="icon"></column>
+            <column name="value">388</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C04</column>
+            <column name="name">Spamero</column>
+            <column name="description">Mandaste 500 mensajes en #EmojiSpam</column>
+            <column name="icon"></column>
+            <column name="value">556</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C05</column>
+            <column name="name">Culto</column>
+            <column name="description">Mandaste 1000 mensajes en #CulturaPop</column>
+            <column name="icon"></column>
+            <column name="value">777</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C06</column>
+            <column name="name">Callado</column>
+            <column name="description">Mandaste 2000 mensajes en #Antivoz</column>
+            <column name="icon"></column>
+            <column name="value">882</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C07</column>
+            <column name="name">Escritor</column>
+            <column name="description">Mandaste 4000 mensajes en #Antivoz</column>
+            <column name="icon"></column>
+            <column name="value">1000</column>
+        </table>
+        <table name="achievements">
+            <column name="id">C08</column>
+            <column name="name">El programador te quiere &lt;3</column>
+            <column name="description">Usaste 444 comandos del LZC Bot</column>
+            <column name="icon"></column>
+            <column name="value">1000</column>
+        </table>
+        <table name="achievements">
+            <column name="id">D01</column>
+            <column name="name">Artista competitivo</column>
+            <column name="description">Participaste en un V.S</column>
+            <column name="icon"></column>
+            <column name="value">422</column>
+        </table>
+        <table name="achievements">
+            <column name="id">D02</column>
+            <column name="name">Artista profesional</column>
+            <column name="description">Fuiste finalista en un V.S</column>
+            <column name="icon"></column>
+            <column name="value">744</column>
+        </table>
+        <table name="achievements">
+            <column name="id">D03</column>
+            <column name="name">Artista lider</column>
+            <column name="description">Ganaste una edición de V.S</column>
+            <column name="icon"></column>
+            <column name="value">880</column>
+        </table>
+        <table name="achievements">
+            <column name="id">D04</column>
+            <column name="name">Artista veterano</column>
+            <column name="description">Participaste en por lo menos cinco V.S</column>
+            <column name="icon"></column>
+            <column name="value">934</column>
+        </table>
+        <table name="achievements">
+            <column name="id">D05</column>
+            <column name="name">Artista invicto</column>
+            <column name="description">Fuiste finalista en al menos cinco V.S</column>
+            <column name="icon"></column>
+            <column name="value">1000</column>
+        </table>
+        <table name="achievements">
+            <column name="id">D06</column>
+            <column name="name">Artista REY</column>
+            <column name="description">Ganaste un V.S All Stars</column>
+            <column name="icon"></column>
+            <column name="value">1000</column>
+        </table>
+        <!-- Tabla members -->
+        <!-- Tabla messages -->
+        <!-- Tabla stats -->
+    </database>
+</pma_xml_export>

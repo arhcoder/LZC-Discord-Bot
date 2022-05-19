@@ -32,7 +32,7 @@ client.once("ready", () =>
 });
 
 // Running app backend...
-// backend.run();
+backend.run();
 
 
 
