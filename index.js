@@ -5,6 +5,7 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const backend = require("./api/backend");
 const variables = require("./config/variables");
+const newMember = require("./functions/newMember");
 
 
 
@@ -29,11 +30,26 @@ client.once("ready", () =>
 
     // Discord bot display for "Playing ---"...
 	client.user.setActivity("LZC 😎");
+
+    // Save on the database all the members on the guild...
+
+    // Get the guild...
+    const guild = client.guilds.cache.get("975148173083414608");
+
+    // Fetch and get the list of members...
+    guild.members.fetch().then(members =>
+    {
+        // Loop through every member...
+        members.forEach(member =>
+        {
+            // Saves the member on the database...
+            newMember.run(member.user.id);
+        });
+    });
 });
 
 // Running app backend...
 backend.run();
-
 
 
 
@@ -105,6 +121,16 @@ client.on("messageCreate", message =>
         const command = client.commands.get(cmd);
         if(command) command.run(client, message, args);
     }
+});
+
+
+
+
+// Actively listen when a member joins...
+client.on("guildMemberAdd", member =>
+{
+    // Saves the new member on the database...
+    newMember.run(member.user.id);
 });
 
 
