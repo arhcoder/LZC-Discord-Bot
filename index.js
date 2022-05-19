@@ -25,15 +25,8 @@ const TOKEN = process.env.TOKEN;
 // When the client is ready, run this code (only once)...
 client.once("ready", () =>
 {
-    // Message in console. When the bot is correctly connected...
-	console.log("LZC Discord Bot ready!");
-
-    // Discord bot display for "Playing ---"...
-	client.user.setActivity("LZC 😎");
-
     // Save on the database all the members on the guild...
-
-    // Get the guild...
+    console.log("Refreshing database...");
     const guild = client.guilds.cache.get("975148173083414608");
 
     // Fetch and get the list of members...
@@ -46,6 +39,13 @@ client.once("ready", () =>
             newMember.run(member.user.id);
         });
     });
+    console.log("Database refreshed!");
+
+    // Message in console. When the bot is correctly connected...
+	console.log("LZC Discord Bot ready!");
+
+    // Discord bot display for "Playing ---"...
+	client.user.setActivity("LZC 😎");
 });
 
 // Running app backend...

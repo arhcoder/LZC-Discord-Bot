@@ -7,8 +7,8 @@ module.exports.run = async (memberID) =>
     {
         await fetch("http://localhost:3000/new/"+memberID);
     }
-    catch(error)
+    catch
     {
-        console.log(error);
+        console.log("Member not added...")
     }
 };
