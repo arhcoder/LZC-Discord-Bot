@@ -1,6 +1,7 @@
 const Mee6LevelsApi = require("mee6-levels-api");
 const { MessageEmbed } = require("discord.js");
 const { pagination } = require("reconlx");
+const fetch = require("node-fetch");
 const constants = require("../../config/constants");
 
 module.exports.run = (client, message, args) =>
@@ -10,7 +11,7 @@ module.exports.run = (client, message, args) =>
     try
     {
         // Access to the MEE6 Levels API and extracts the data...
-        Mee6LevelsApi.getLeaderboardPage(constants.lzcGuildID).then(leaderboard =>
+        Mee6LevelsApi.getLeaderboardPage(constants.lzcGuildID).then(async leaderboard =>
         {
             for (var i = 0; i < 50; i++)
             {
@@ -20,7 +21,20 @@ module.exports.run = (client, message, args) =>
                 let member = leaderboard[i]["tag"];
                 let level = leaderboard[i]["level"];
                 let xp = leaderboard[i]["xp"]["totalXp"];
-                let lzc = 882;
+
+                // Gets a user lzc points data from the database...
+                var lzc = 0;
+                try
+                {
+                    const response = await fetch("http://localhost:3000/points/"+leaderboard[i]["id"]);
+                    lzc = await response.json()[0].lzcpoints;
+                }
+                catch
+                {
+                    lzc = "?";
+                }
+
+                // Give format to the numbers...
                 if (parseInt(xp) >= 1000000) xp = "" + (parseInt(xp) / 1000000).toFixed(2) + "M";
                 else if (parseInt(xp) >= 1000) xp = "" + parseInt(parseInt(xp) / 1000) + "k";
     

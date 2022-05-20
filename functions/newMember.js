@@ -9,6 +9,6 @@ module.exports.run = async (memberID) =>
     }
     catch
     {
-        console.log("Member not added...")
+        console.log("Member not added...");
     }
 };
