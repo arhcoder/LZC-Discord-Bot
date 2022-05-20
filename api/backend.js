@@ -48,8 +48,8 @@ module.exports.run = async () =>
     // DOES USER EXISTS //
     app.get("/exists/:userID", (request, response) =>
     {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", true);
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
 
         connection.query("SELECT EXISTS (SELECT 1 FROM members WHERE id = ?)", [request.params.userID], (error, data, fields) =>
         {
@@ -61,8 +61,8 @@ module.exports.run = async () =>
     // NEW MEMBER //
     app.get("/new/:userID", (request, response) =>
     {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", true);
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
 
         connection.query("INSERT INTO members (id) VALUES (?);"+
         "INSERT INTO stats (memberID) VALUES (?);"+
@@ -75,10 +75,24 @@ module.exports.run = async () =>
     
 
     // SELECT ACHIEVEMENTS //
+
+    // SELECT ALL ACHIEVEMENTS INFO //
+    app.get("/achievements", (request, response) =>
+    {
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("SELECT * FROM achievements", (error, data, fields) =>
+        {
+            if (!error) response.send(data);
+            else response.send(error);
+        });
+    });
+
     app.get("/achievements/:userID", (request, response) =>
     {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", true);
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
 
         connection.query("SELECT achievements FROM members WHERE id = ?", [request.params.userID], (error, data, fields) =>
         {
@@ -90,8 +104,8 @@ module.exports.run = async () =>
     // SELECT ACHIEVEMENTS INFO //
     app.get("/achievement/:achievementID", (request, response) =>
     {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", true);
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
 
         connection.query("SELECT * FROM achievements WHERE id = ?", [request.params.achievementID], (error, data, fields) =>
         {
@@ -104,8 +118,8 @@ module.exports.run = async () =>
     // SELECT USER POINTS //
     app.get("/points/:userID", (request, response) =>
     {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Credentials", true);
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
 
         connection.query("SELECT lzcpoints FROM members WHERE id = ?", [request.params.userID], (error, data, fields) =>
         {

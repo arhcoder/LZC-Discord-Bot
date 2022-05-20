@@ -9,6 +9,5 @@ module.exports =
     rankCardBackgroundPattern: "https://raw.githubusercontent.com/arhcoder/LZC-Discord-Bot/master/images/pattern.png",
 
     separator: "<:separator:975651401789218838>",
-    leftArrow: "",
-    rightArrow: ""
+    lock: "<:lock:977039530639130635>",
 }
