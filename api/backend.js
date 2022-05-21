@@ -128,4 +128,19 @@ module.exports.run = async () =>
             else response.send(error);
         });
     });
+
+    // SELECTS ALL MEMBER'S STATS //
+    app.get("/stats/:userID", (request, response) =>
+    {
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("SELECT * FROM stats WHERE memberID = ?;"+
+        "SELECT achievements, lzcpoints FROM members WHERE id = ?;",
+        [request.params.userID, request.params.userID], (error, data, fields) =>
+        {
+            if (!error) response.send(data);
+            else response.send(error);
+        });
+    });  
 };
