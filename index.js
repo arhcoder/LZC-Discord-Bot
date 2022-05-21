@@ -6,6 +6,7 @@ const Discord = require("discord.js");
 const backend = require("./api/backend");
 const variables = require("./config/variables");
 const newMember = require("./functions/newMember");
+const countMessage = require("./functions/counMessage");
 
 
 
@@ -72,8 +73,20 @@ for(let file of commands)
 // Actively listen for messages on the Discord server...
 client.on("messageCreate", message =>
 {
+    // If the message is from a bot...
+    if (message.author.bot)
+        return;
+
+    // If the message is not a command...
+    var messageContent = message.content.toLowerCase();
+    if (!messageContent.startsWith(prefix + " "))
+    {
+        countMessage.run(message);
+        return;
+    }
+
     // Only if the message call a command, it searchs the command...
-    if (message.content.startsWith(prefix) || message.content === "<@"+variables.botID+">" || message.content === "<@&"+variables.botRoleID+">" || message.author.bot)
+    if (messageContent.startsWith(prefix + " ") || message.content === "<@"+variables.botID+">" || message.content === "<@&"+variables.botRoleID+">")
     {
         // Gets the command info to execute functions...
         const args = message.content.slice(prefix.length + 1).split(/ +/);
@@ -120,6 +133,9 @@ client.on("messageCreate", message =>
         // Executes the command if it exists...
         const command = client.commands.get(cmd);
         if(command) command.run(client, message, args);
+
+        // Count the message...
+        countMessage.run(message);
     }
 });
 

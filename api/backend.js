@@ -21,7 +21,6 @@ module.exports.run = async () =>
     var connection = mysql.createConnection(
     {
         host: "localhost",
-        // port: 3000,
         user: "root",
         database: "lzc",
         password: "",
@@ -142,5 +141,20 @@ module.exports.run = async () =>
             if (!error) response.send(data);
             else response.send(error);
         });
-    });  
+    });
+    
+
+    // COUNT MESSAGE //
+    app.get("/count/:channel/:userID", (request, response) =>
+    {
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("UPDATE messages SET "+request.params.channel+" = "+request.params.channel+" + 1 WHERE memberID = ?",
+        [request.params.userID], (error, data, fields) =>
+        {
+            if (!error) response.send(data);
+            else response.send(error);
+        });
+    });
 };
