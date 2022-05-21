@@ -1,10 +1,13 @@
 const fetch = require("node-fetch");
 const { MessageEmbed } = require("discord.js");
 const { pagination } = require("reconlx");
+const checkAchievements = require("../../functions/checkAchievements");
 const constants = require("../../config/constants");
 
 module.exports.run = async (client, message, args) =>
 {
+    checkAchievements.run(client, message.author.id);
+
     // Takes the mentioned users to get the args, or the first arg...
     var member = message.mentions.members.first() ||
     message.guild.members.cache.get(args[0]);
