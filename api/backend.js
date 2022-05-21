@@ -157,4 +157,18 @@ module.exports.run = async () =>
             else response.send(error);
         });
     });
+
+    // COUNT COMMAND //
+    app.get("/command/:userID", (request, response) =>
+    {
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("UPDATE stats SET commands = commands + 1 WHERE memberID = ?",
+        [request.params.userID], (error, data, fields) =>
+        {
+            if (!error) response.send(data);
+            else response.send(error);
+        });
+    });
 };

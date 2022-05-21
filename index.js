@@ -7,6 +7,7 @@ const backend = require("./api/backend");
 const variables = require("./config/variables");
 const newMember = require("./functions/newMember");
 const countMessage = require("./functions/countMessage");
+const countCommand = require("./functions/countCommand");
 
 
 
@@ -136,6 +137,7 @@ client.on("messageCreate", message =>
 
         // Count the message...
         countMessage.run(message);
+        countCommand.run(message);
     }
 });
 
