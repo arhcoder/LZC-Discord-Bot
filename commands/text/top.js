@@ -27,7 +27,8 @@ module.exports.run = (client, message, args) =>
                 try
                 {
                     const response = await fetch("http://localhost:3000/points/"+leaderboard[i]["id"]);
-                    lzc = await response.json()[0].lzcpoints;
+                    var json = await response.json();
+                    lzc = json[0]["lzcpoints"];
                 }
                 catch
                 {
@@ -209,36 +210,21 @@ module.exports.run = (client, message, args) =>
             var embeds = [topEmbed01, topEmbed02, topEmbed03, topEmbed04, topEmbed05,
             topEmbed06, topEmbed07, topEmbed08, topEmbed09, topEmbed10];
 
-            pagination(
+            try
             {
-                embeds: embeds,
-                message: message,
-                button:
-                [
-                    /*{
-                        name: "first",
-                        emoji: "⬅",
-                        style: "PRIMARY"
-                    },
-                    {
-                        name: "second",
-                        emoji: ":point_left::skin-tone-1:",
-                        style: "PRIMARY"
-                    },
-                    {
-                        name: "third",
-                        emoji: ":fleur_de_lis:",
-                        style: "PRIMARY"
-                    },
-                    {
-                        name: "fourth",
-                        emoji: ":point_left::skin-tone-1:",
-                        style: "PRIMARY"
-                    }*/
-                ],
-                fastSkip: true,
-                time: 44000
-            });
+                await pagination(
+                {
+                    author: message.author,
+                    channel: message.channel,
+                    embeds: embeds,
+                    fastSkip: true,
+                    time: 40000
+                });
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
         });
     }
     catch

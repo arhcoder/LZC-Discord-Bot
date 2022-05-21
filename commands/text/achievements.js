@@ -126,10 +126,11 @@ module.exports.run = async (client, message, args) =>
             var embeds = [embed01, embed02, embed03, embed04];
             pagination(
             {
+                author: message.author,
+                channel: message.channel,
                 embeds: embeds,
-                message: message,
                 fastSkip: false,
-                time: 44000
+                time: 40000
             });
         }
         catch(error)
