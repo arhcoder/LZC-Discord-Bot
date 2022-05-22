@@ -6,7 +6,7 @@ const Discord = require("discord.js");
 const backend = require("./api/backend");
 const variables = require("./config/variables");
 const newMember = require("./functions/newMember");
-const countMessage = require("./functions/counMessage");
+const countMessage = require("./functions/countMessage");
 
 
 
