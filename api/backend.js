@@ -176,7 +176,7 @@ module.exports.run = async () =>
         // response.setHeader("Access-Control-Allow-Origin", "*");
         // response.setHeader("Access-Control-Allow-Credentials", true);
 
-        connection.query("SELECT * FROM messages WHERE id = ?", [request.params.userID], (error, data, fields) =>
+        connection.query("SELECT * FROM messages WHERE memberID = ?", [request.params.userID], (error, data, fields) =>
         {
             if (!error) response.send(data);
             else response.send(error);
@@ -185,13 +185,13 @@ module.exports.run = async () =>
 
 
     // GIVE AN ACHIEVEMENT //
-    app.get("/setAchievements/:achievements/:points/:userID", (request, response) =>
+    app.get("/achievements/give/:achievementID/:achievements/:userID", (request, response) =>
     {
-        // response.setHeader("Access-Control-Allow-Origin", "*");
-        // response.setHeader("Access-Control-Allow-Credentials", true);
-
-        connection.query("UPDATE members SET achievements = ?, lzcpoints = lzcpoints + ? WHERE id = ?",
-        [request.params.achievements, request.params.points, request.params.userID], (error, data, fields) =>
+        // Achivements is the complete list to update, and achievement the once...
+        connection.query("UPDATE members SET achievements = ?,"+
+        "lzcpoints = lzcpoints + (SELECT value FROM achievements WHERE id = ?)"+
+        "WHERE id = ?", [request.params.achievements, request.params.achievementID,
+        request.params.userID], (error, data, fields) =>
         {
             if (!error) response.send(data);
             else response.send(error);

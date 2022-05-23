@@ -27,8 +27,8 @@ module.exports.run = async (message) =>
         await fetch("http://localhost:3000/count/pop/"+message.author.id);
     
     // If it is from "lzgeneral channel"...
-    else if (messageChannelID === variables.lzgeneral1ChannelID || messageChannelID === variables.lzgeneral2ChannelID)
-        await fetch("http://localhost:3000/count/lzgeneral/"+message.author.id);
+    // else if (messageChannelID === variables.lzgeneral1ChannelID || messageChannelID === variables.lzgeneral2ChannelID)
+    //    await fetch("http://localhost:3000/count/lzgeneral/"+message.author.id);
     
     // If it is from "antivoz channel"...
     else if (messageChannelID === variables.antivozChannelID)
