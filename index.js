@@ -5,6 +5,7 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const backend = require("./api/backend");
 const variables = require("./config/variables");
+const constants = require("./config/constants");
 const newMember = require("./functions/newMember");
 const countMessage = require("./functions/countMessage");
 const countCommand = require("./functions/countCommand");
@@ -17,7 +18,8 @@ const checkAchievements = require("./functions/checkAchievements");
 console.log("Launching LZC Discord Bot...");
 
 // Create the client class to create the connection...
-const client = new Discord.Client({
+const client = new Discord.Client(
+{
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"]
 });
 
@@ -30,7 +32,7 @@ client.once("ready", () =>
 {
     // Save on the database all the members on the guild...
     console.log("Refreshing database...");
-    const guild = client.guilds.cache.get("975148173083414608");
+    const guild = client.guilds.cache.get(constants.lzcGuildID);
 
     // Fetch and get the list of members...
     guild.members.fetch().then(members =>
@@ -44,8 +46,13 @@ client.once("ready", () =>
     });
     console.log("Database refreshed!");
 
+    // Getting commands colection...
+    const slashCommands = client.slashCommands.map(slash => slash);
+    guild.commands.set(slashCommands);
+    console.log("Commands collected!");
+
     // Message in console. When the bot is correctly connected...
-	console.log("LZC Discord Bot ready!");
+	console.log("LZC Discord Bot ready!\n");
 
     // Discord bot display for "Playing ---"...
 	client.user.setActivity("LZC 😎");
@@ -67,6 +74,16 @@ for(let file of commands)
     const commandName = file.split(".")[0];
     const commandReference = require("./commands/text/"+commandName);
     client.commands.set(commandName, commandReference);
+}
+
+// Gets the slash commands collection to do a handler...
+client.slashCommands = new Discord.Collection();
+const slashCommands = fs.readdirSync("./commands/slash/").filter(file => file.endsWith(".js"));
+for (const file of slashCommands)
+{
+    const slashCommandName = file.split(".")[0];
+    const slash = require("./commands/slash/"+slashCommandName);
+    client.slashCommands.set(slash.name, slash);
 }
 
 
@@ -93,8 +110,6 @@ client.on("messageCreate", message =>
         }
         return;
     }
-    
-    // console.log(message.mentions.members.user);
     
     // If the message is not a command...
     var messageContent = message.content.toLowerCase();
@@ -158,6 +173,33 @@ client.on("messageCreate", message =>
         // Count the message...
         countMessage.run(message);
         countCommand.run(message);
+    }
+});
+
+
+
+
+client.on("interactionCreate", (interaction) =>
+{
+    // If it is not a command...
+    if (!interaction.isCommand()) return;
+
+    // If it not exist slash command...
+    const slashCommands = client.slashCommands.get(interaction.commandName);
+    if (!slashCommands) return;
+
+    // If the member has no permission to do the slash command...
+    if (!interaction.member.roles.cache.some(roles => roles.id === variables.botAdminRoleID))
+        return interaction.reply({ content: "Tú no tienes permiso para usar este comando :shushing_face:", ephemeral: true});
+    
+    // Try to execute the command...
+    try
+    {
+        slashCommands.run(client, interaction);
+    }
+    catch(error)
+    {
+        console.log(error);
     }
 });
 

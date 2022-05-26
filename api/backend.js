@@ -184,6 +184,34 @@ module.exports.run = async () =>
     });
 
 
+    // INCREMENT STATS //
+    app.get("/increment/:name/:userID", (request, response) =>
+    {
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("UPDATE stats SET "+request.params.name+" = "+request.params.name+" + 1 WHERE memberID = ?",
+        [request.params.userID], (error, data, fields) =>
+        {
+            if (!error) response.send(data);
+            else response.send(error);
+        });
+    });
+
+    // GET STAT //
+    app.get("/stat/:name/:userID", (request, response) =>
+    {
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        // response.setHeader("Access-Control-Allow-Credentials", true);
+
+        connection.query("SELECT "+request.params.name+" FROM stats WHERE memberID = ?",
+        [request.params.userID], (error, data, fields) =>
+        {
+            if (!error) response.send(data);
+            else response.send(error);
+        });
+    });
+
     // GIVE AN ACHIEVEMENT //
     app.get("/achievements/give/:achievementID/:achievements/:userID", (request, response) =>
     {
